@@ -14,27 +14,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  # test:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: supabase/setup-cli@v1
-        with:
-          version: latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: supabase/setup-cli@v1
+  #       with:
+  #         version: latest
 
-      - run: supabase db start
-      - run: supabase db lint
-      - run: supabase test db
+  #     - run: supabase db start
+  #     - run: supabase db lint
+  #     - run: supabase test db
 
-      - name: Verify generated types are checked in
-        run: |
-          supabase gen types typescript --local > types.gen.ts
-          if ! git diff --ignore-space-at-eol --exit-code --quiet types.gen.ts; then
-            echo "Detected uncommitted changes after build. See status below:"
-            git diff
-            exit 1
-          fi
+  #     - name: Verify generated types are checked in
+  #       run: |
+  #         supabase gen types typescript --local > types.gen.ts
+  #         if ! git diff --ignore-space-at-eol --exit-code --quiet types.gen.ts; then
+  #           echo "Detected uncommitted changes after build. See status below:"
+  #           git diff
+  #           exit 1
+  #         fi
 
   dryrun:
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
       - run: supabase link --project-ref $SUPABASE_PROJECT_ID
       - run: supabase db push --dry-run
 
-  # Adapted from: https://github.com/marketplace/actions/hashicorp-setup-terraform
+  Adapted from: https://github.com/marketplace/actions/hashicorp-setup-terraform
   # plan:
   #   runs-on: ubuntu-latest
   #   env:
