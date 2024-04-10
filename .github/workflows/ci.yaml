@@ -52,7 +52,7 @@ jobs:
       - run: supabase link --project-ref $SUPABASE_PROJECT_ID
       - run: supabase db push --dry-run
 
-  Adapted from: https://github.com/marketplace/actions/hashicorp-setup-terraform
+  #Adapted from: https://github.com/marketplace/actions/hashicorp-setup-terraform
   # plan:
   #   runs-on: ubuntu-latest
   #   env:
